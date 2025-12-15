@@ -1,9 +1,9 @@
 from sqlalchemy.orm.session import Session 
 from db.models import DbUser
-import schemas 
+from schemas import UserBase
 from db.hash import Hash
 
-def create_user(db: Session, request: schemas.UserBase):
+def create_user(db: Session, request: UserBase):
     db_user = DbUser(
         username=request.username,
         email=request.email,
