@@ -1,10 +1,9 @@
 from passlib.context import CryptContext
 
-pwd_cxt = CryptContext(schemes=["bcrypt"], deprecated="auto")
+pwd_cxt = CryptContext(schemes=["bcrypt_sha256"], deprecated="auto")
 
 class Hash():
-    def bcrypt(password: str):
-        return pwd_cxt.hash(password)
-
-    def verify(hashed_password: str, plain_password: str):
-        return pwd_cxt.verify(plain_password, hashed_password)
+    def bcrypt(plain: str):
+        return pwd_cxt.hash(plain)
+    def verify(hashed, plain):
+        return pwd_cxt.verify(plain, hashed)
